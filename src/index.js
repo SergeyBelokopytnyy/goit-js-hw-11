@@ -5,6 +5,7 @@ import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import LoadMoreBtn from './js/load-more';
+import anchors from './js/anchors';
 
 const searchForm = document.querySelector('#search-form');
 const cards = document.querySelector('.gallery');

@@ -4,19 +4,17 @@ export default class NewsApiService {
     this.page = 1;
     this.total = '';
   }
-  fetchCards() {
+  async fetchCards() {
     const URL = 'https://pixabay.com/api/';
     const quantity = '40';
     const KEY = '25851968-4919ec9d4a264dc8dd1f164b6';
-    return fetch(
+    const response = await fetch(
       `${URL}?key=${KEY}&q=${this.search}&per_page=${quantity}&orientation=horizontal&page=${this.page}&image_type=photo&safesearch=true`,
-    )
-      .then(response => response.json())
-      .then(({ hits, total }) => {
-        this.page += 1;
-        this.total = total;
-        return hits;
-      });
+    );
+    const { hits, total } = await response.json();
+    this.page += 1;
+    this.total = total;
+    return hits;
   }
   resetPage() {
     this.page = 1;

@@ -16,7 +16,7 @@ const loadMoreBtn = new LoadMoreBtn({
 });
 const newsApiService = new NewsApiService();
 
-var lightbox = new SimpleLightbox('.gallery a', {
+let lightbox = new SimpleLightbox('.gallery a', {
   /* options */
 });
 
@@ -25,7 +25,7 @@ loadMoreBtn.refs.button.addEventListener('click', fetchHits);
 
 function onSearch(event) {
   event.preventDefault();
-  newsApiService.query = event.currentTarget.elements.searchQuery.value;
+  newsApiService.query = event.currentTarget.elements.searchQuery.value.trim();
   if (newsApiService.query === '') {
     return Notiflix.Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.',

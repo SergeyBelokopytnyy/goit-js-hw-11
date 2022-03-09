@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+const axios = require('axios').default;
 
 export default class NewsApiService {
   constructor() {
@@ -11,16 +12,16 @@ export default class NewsApiService {
       const URL = 'https://pixabay.com/api/';
       const quantity = '40';
       const KEY = '25851968-4919ec9d4a264dc8dd1f164b6';
-      const response = await fetch(
+      const response = await axios.get(
         `${URL}?key=${KEY}&q=${this.search}&per_page=${quantity}&orientation=horizontal&page=${this.page}&image_type=photo&safesearch=true`,
       );
-      const { hits, total } = await response.json();
+      const { hits, total } = await response.data;
       this.page += 1;
       this.total = total;
 
       return hits;
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       Notiflix.Loading.remove();
       Notiflix.Report.failure(
         'Notiflix Failure',

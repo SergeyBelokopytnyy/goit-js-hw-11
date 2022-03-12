@@ -16,8 +16,10 @@ export default class NewsApiService {
         `${URL}?key=${KEY}&q=${this.search}&per_page=${quantity}&orientation=horizontal&page=${this.page}&image_type=photo&safesearch=true`,
       );
       const { hits, total } = await response.data;
+      // console.log(hits);
       this.page += 1;
       this.total = total;
+      // console.log(this.total);
 
       return hits;
     } catch (error) {

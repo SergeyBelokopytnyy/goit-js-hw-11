@@ -42,15 +42,15 @@ function appendHitsMarkup(hits) {
       'Sorry, there are no images matching your search query. Please try again.',
     );
   }
-  if (hits.length < 40) {
-    loadMoreBtn.hide();
-    return Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
-  }
   const quantityTotal = newsApiService.quantity;
   Notiflix.Notify.info(`Hooray! We found ${quantityTotal} images.`);
   // console.log(hits.length);
   cards.insertAdjacentHTML('beforeend', cardTemplate(hits));
   lightbox.refresh();
+  if (hits.length < 40) {
+    loadMoreBtn.hide();
+    return Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+  }
 }
 
 function clearHitsContainer() {

@@ -6,6 +6,7 @@
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   flex-basis: calc(100% / 4 - 30px);
+  transition: transform 500ms ease-out;
 }
 
 .gallery {
@@ -35,4 +36,7 @@
 }
 .card-img {
   width: 100%;
+}
+.card:hover {
+  transform: scale(1.05);
 }
